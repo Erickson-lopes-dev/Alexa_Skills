@@ -8,4 +8,4 @@ api = Api(app)
 api.add_resource(WhoIsLiveTwitch, "/wilt")
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
