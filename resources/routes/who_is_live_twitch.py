@@ -13,8 +13,8 @@ def check_live(driver: webdriver, streamer_name) -> dict:
         driver.get(f"https://www.twitch.tv/{streamer_name}")
 
         try:
-            live = WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH,
-                                                                                    '//*[@id="root"]/div/div[2]/div[1]/main/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div[1]/div/div/div/a/div[2]/div/div/div/div/p')))
+            WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH,
+                                                                             '//*[@id="root"]/div/div[2]/div[1]/main/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div[1]/div/div/div/a/div[2]/div/div/div/div/p')))
 
         except Exception:
             return {streamer_name: False}
