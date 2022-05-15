@@ -21,8 +21,12 @@ def check_live(driver: webdriver, streamer_name) -> dict:
 
     except Exception as error:
         return {"error": str(error)}
+    texto = live.text
 
-    return {streamer_name: True}
+    if texto == "AO VIVO":
+        return {streamer_name: True}
+    else:
+        return {"error": live.text}
 
 
 class WhoIsLiveTwitch(Resource):
