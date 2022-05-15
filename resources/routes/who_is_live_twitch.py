@@ -32,7 +32,7 @@ def check_live(driver: webdriver, streamer_name) -> dict:
 class WhoIsLiveTwitch(Resource):
     @classmethod
     def get(cls):
-        list_streamers = ['gaules', 'smurfdomuca']
+        list_streamers = ['smurfdomuca', 'yoda', 'ayellol', 'defantediogo']
         dict_streamers = {}
 
         driver = get_webdriver()
