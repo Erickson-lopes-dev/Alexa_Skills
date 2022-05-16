@@ -1,3 +1,5 @@
+from time import sleep
+
 from flask_restful import Resource
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -11,9 +13,9 @@ def check_live(driver: webdriver, streamer_name) -> dict:
     try:
 
         driver.get(f"https://www.twitch.tv/{streamer_name}")
-
+        sleep(1)
         try:
-            WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH,
+            obj = WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH,
                                                                              '//*[@id="root"]/div/div[2]/div[1]/main/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div[1]/div/div/div/a/div[2]/div/div/div')))
 
         except Exception:
@@ -22,7 +24,7 @@ def check_live(driver: webdriver, streamer_name) -> dict:
     except Exception as error:
         return {"error": str(error)}
 
-    return {streamer_name: True}
+    return {streamer_name: obj.text}
 
 
 class WhoIsLiveTwitch(Resource):
